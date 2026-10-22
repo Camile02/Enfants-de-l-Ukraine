@@ -1,2 +1,4 @@
 # camile02.github.io
-Helping Ukrainian children feel safe, seen, and supported.
+Association : enfant de l'Ukraine
+
+Présidente : Tatiana
