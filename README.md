@@ -1,4 +1,22 @@
-                                                              Association : enfant de l'Ukraine
+document.addEventListener('DOMContentLoaded', () => {
+  const year = document.getElementById('year');
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
 
+  const revealItems = document.querySelectorAll('.reveal');
 
-Présidente : Tatiana
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
+});
