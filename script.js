@@ -1,18 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const donateMenu = document.querySelector('.donate-menu');
-  const donateBtn = document.querySelector('.donate-btn');
-
-  if (donateBtn && donateMenu) {
-    donateBtn.addEventListener('click', () => {
-      const isOpen = donateMenu.classList.toggle('open');
-      donateBtn.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    document.addEventListener('click', (event) => {
-      if (!donateMenu.contains(event.target)) {
-        donateMenu.classList.remove('open');
-        donateBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
+  const year = document.getElementById('year');
+  if (year) {
+    year.textContent = new Date().getFullYear();
   }
+
+  const revealItems = document.querySelectorAll('.reveal');
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
 });
