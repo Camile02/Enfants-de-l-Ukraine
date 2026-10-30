@@ -1,8 +1,12 @@
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Enfants de l'Ukraine is a humanitarian association helping families in Ukraine through convoys, emergency aid, and solidarity."
+    />
     <title>Enfants de l'Ukraine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,7 +19,6 @@
         --blue-900: #113a6d;
         --blue-800: #1d4d8f;
         --blue-600: #2d72c6;
-        --blue-300: #dfeeff;
         --yellow-400: #f6d55c;
         --yellow-300: #ffeaa8;
         --white: #ffffff;
@@ -183,6 +186,12 @@
         background: rgba(246, 213, 92, 0.18);
         color: var(--blue-900);
         border: 1px solid rgba(45, 114, 198, 0.12);
+      }
+
+      .nav-button:hover,
+      .button:hover,
+      .donate-button:hover {
+        transform: translateY(-2px);
       }
 
       .hero {
@@ -568,7 +577,6 @@
       <div class="topbar">
         <div class="container topbar-inner">
           <div class="topbar-summary">Helping families in Ukraine with dignity, care, and solidarity.</div>
-
           <div class="lang-switcher" aria-label="Language selector">
             <button class="lang-btn active" type="button" data-lang="en">EN</button>
             <button class="lang-btn" type="button" data-lang="fr">FR</button>
@@ -960,8 +968,8 @@
         }
       };
 
-      const langButtons = document.querySelectorAll(".lang-btn");
       const translatableNodes = document.querySelectorAll("[data-i18n]");
+      const langButtons = document.querySelectorAll(".lang-btn");
 
       function setLanguage(lang) {
         const dict = translations[lang] || translations.en;
@@ -984,8 +992,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        const year = document.getElementById("year");
-        if (year) year.textContent = new Date().getFullYear();
+        document.getElementById("year").textContent = new Date().getFullYear();
 
         langButtons.forEach((button) => {
           button.addEventListener("click", () => {
